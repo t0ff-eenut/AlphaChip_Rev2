@@ -1,0 +1,130 @@
+raw_metadata['SensorTimestamp']  7467782560000
+raw_metadata['ExposureTime']  59999
+raw_metadata['ScalerCrop']  (2, 0, 4052, 3040)
+raw_metadata['AnalogueGain']  4.471615791320801
+raw_metadata['DigitalGain']  1.0036497116088867
+raw_metadata['FrameDuration']  60333
+raw_metadata['AeLocked']  False
+raw_metadata['ColourGains']  (3.1326799392700195, 1.513029932975769)
+raw_metadata['ColourTemperature']  5230
+raw_metadata['FocusFoM']  2023
+raw_metadata['SensorTimestamp']  7469351225000
+raw_metadata['ExposureTime']  59999
+raw_metadata['ScalerCrop']  (2, 0, 4052, 3040)
+raw_metadata['AnalogueGain']  4.471615791320801
+raw_metadata['DigitalGain']  1.0036497116088867
+raw_metadata['FrameDuration']  60333
+raw_metadata['AeLocked']  False
+raw_metadata['ColourGains']  (3.1332356929779053, 1.5129152536392212)
+raw_metadata['ColourTemperature']  5232
+raw_metadata['FocusFoM']  2012
+raw_metadata['SensorTimestamp']  7470557892000
+raw_metadata['ExposureTime']  59999
+raw_metadata['ScalerCrop']  (2, 0, 4052, 3040)
+raw_metadata['AnalogueGain']  4.807511806488037
+raw_metadata['DigitalGain']  1.0032013654708862
+raw_metadata['FrameDuration']  60333
+raw_metadata['AeLocked']  False
+raw_metadata['ColourGains']  (3.1318130493164062, 1.5131583213806152)
+raw_metadata['ColourTemperature']  5227
+raw_metadata['FocusFoM']  925
+raw_metadata['SensorTimestamp']  7471772837000
+raw_metadata['ExposureTime']  61182
+raw_metadata['ScalerCrop']  (2, 0, 4052, 3040)
+raw_metadata['AnalogueGain']  5.988304138183594
+raw_metadata['DigitalGain']  1.0020294189453125
+raw_metadata['FrameDuration']  66991
+raw_metadata['AeLocked']  False
+raw_metadata['ColourGains']  (3.1302504539489746, 1.5134304761886597)
+raw_metadata['ColourTemperature']  5222
+raw_metadata['FocusFoM']  608
+raw_metadata['SensorTimestamp']  7473112663000
+raw_metadata['ExposureTime']  66657
+raw_metadata['ScalerCrop']  (2, 0, 4052, 3040)
+raw_metadata['AnalogueGain']  6.400000095367432
+raw_metadata['DigitalGain']  1.0055416822433472
+raw_metadata['FrameDuration']  66991
+raw_metadata['AeLocked']  False
+raw_metadata['ColourGains']  (2.9518678188323975, 1.674591302871704)
+raw_metadata['ColourTemperature']  4796
+raw_metadata['FocusFoM']  1572
+raw_metadata['SensorTimestamp']  7475303166000
+raw_metadata['ExposureTime']  59999
+raw_metadata['ScalerCrop']  (2, 0, 4052, 3040)
+raw_metadata['AnalogueGain']  5.818181991577148
+raw_metadata['DigitalGain']  1.0036977529525757
+raw_metadata['FrameDuration']  60333
+raw_metadata['AeLocked']  False
+raw_metadata['ColourGains']  (2.8067917823791504, 1.8058198690414429)
+raw_metadata['ColourTemperature']  4449
+raw_metadata['FocusFoM']  584
+raw_metadata['SensorTimestamp']  7476348549000
+raw_metadata['ExposureTime']  66657
+raw_metadata['ScalerCrop']  (2, 0, 4052, 3040)
+raw_metadata['AnalogueGain']  6.564102649688721
+raw_metadata['DigitalGain']  1.0048242807388306
+raw_metadata['FrameDuration']  66991
+raw_metadata['AeLocked']  False
+raw_metadata['ColourGains']  (2.6804163455963135, 1.9235634803771973)
+raw_metadata['ColourTemperature']  4162
+raw_metadata['FocusFoM']  635
+raw_metadata['SensorTimestamp']  7478157318000
+raw_metadata['ExposureTime']  66657
+raw_metadata['ScalerCrop']  (2, 0, 4052, 3040)
+raw_metadata['AnalogueGain']  7.816793918609619
+raw_metadata['DigitalGain']  1.0067816972732544
+raw_metadata['FrameDuration']  66991
+raw_metadata['AeLocked']  False
+raw_metadata['ColourGains']  (2.545847177505493, 2.05247163772583)
+raw_metadata['ColourTemperature']  3870
+raw_metadata['FocusFoM']  691
+raw_metadata['SensorTimestamp']  7479497144000
+raw_metadata['ExposureTime']  66657
+raw_metadata['ScalerCrop']  (2, 0, 4052, 3040)
+raw_metadata['AnalogueGain']  7.816793918609619
+raw_metadata['DigitalGain']  1.0067816972732544
+raw_metadata['FrameDuration']  66991
+raw_metadata['AeLocked']  False
+raw_metadata['ColourGains']  (2.46000337600708, 2.1351423263549805)
+raw_metadata['ColourTemperature']  3685
+raw_metadata['FocusFoM']  705
+raw_metadata['SensorTimestamp']  7480702990000
+raw_metadata['ExposureTime']  66657
+raw_metadata['ScalerCrop']  (2, 0, 4052, 3040)
+raw_metadata['AnalogueGain']  6.440251350402832
+raw_metadata['DigitalGain']  1.0009485483169556
+raw_metadata['FrameDuration']  66991
+raw_metadata['AeLocked']  False
+raw_metadata['ColourGains']  (2.373204469680786, 2.2201719284057617)
+raw_metadata['ColourTemperature']  3501
+raw_metadata['FocusFoM']  1613
+raw_metadata['SensorTimestamp']  7482329519000
+raw_metadata['ExposureTime']  61758
+raw_metadata['ScalerCrop']  (2, 0, 4052, 3040)
+raw_metadata['AnalogueGain']  5.988304138183594
+raw_metadata['DigitalGain']  1.0019822120666504
+raw_metadata['FrameDuration']  62092
+raw_metadata['AeLocked']  False
+raw_metadata['ColourGains']  (2.3545992374420166, 2.236509323120117)
+raw_metadata['ColourTemperature']  3463
+raw_metadata['FocusFoM']  1466
+raw_metadata['SensorTimestamp']  7483438086000
+raw_metadata['ExposureTime']  61152
+raw_metadata['ScalerCrop']  (2, 0, 4052, 3040)
+raw_metadata['AnalogueGain']  5.988304138183594
+raw_metadata['DigitalGain']  1.0021892786026
+raw_metadata['FrameDuration']  61485
+raw_metadata['AeLocked']  False
+raw_metadata['ColourGains']  (2.511340856552124, 2.0748465061187744)
+raw_metadata['ColourTemperature']  3805
+raw_metadata['FocusFoM']  1476
+^Xraw_metadata['SensorTimestamp']  7484729287000
+raw_metadata['ExposureTime']  61152
+raw_metadata['ScalerCrop']  (2, 0, 4052, 3040)
+raw_metadata['AnalogueGain']  5.988304138183594
+raw_metadata['DigitalGain']  1.0021892786026
+raw_metadata['FrameDuration']  61485
+raw_metadata['AeLocked']  False
+raw_metadata['ColourGains']  (2.6533942222595215, 1.9284048080444336)
+raw_metadata['ColourTemperature']  4115
+raw_metadata['FocusFoM']  1475
