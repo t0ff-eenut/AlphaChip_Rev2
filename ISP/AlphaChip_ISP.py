@@ -1,6 +1,6 @@
 import threading, time
 from CIS import AlphaChip_CIS, AlphaChip_CIS_Setting
-from ISP import AlphaChip_ISP_Mode, AlphaChip_ISP_Signal_Clear
+from ISP import AlphaChip_ISP_Mode
 import AlphaChip_Memory
 
 i_x_illuminance_check_time = time.time()
@@ -175,9 +175,6 @@ def Result_data():
 def ISP():
     global g_i_Mode
     g_i_Mode = 0
-    # AlphaChip_Memory.g_INT_STS_REGISTER['_CHIP_MODE'] = AlphaChip_Memory.g_N_mode['non']            #_CHIP_MODE
-    # AlphaChip_Memory.g_INT_STS_REGISTER['FRAME_BUF_STS'] = 0                                        # FRAME_BUF_STS
-    # AlphaChip_Memory.g_INT_STS_REGISTER['_PSEUDO_LED_STS'] = False                                  # LED_STS
     BackGround_Mode_STS = threading.Thread(name="BackGround_Mode_STS", target=AlphaChip_ISP_Mode.Mode, daemon=True) # MODE 동작 Thread
     ###############################################################반복#####################################################################
 

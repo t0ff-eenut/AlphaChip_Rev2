@@ -1,12 +1,16 @@
 # from time import sleep
 import threading
+import AlphaChip_Memory
 from CIS import AlphaChip_CIS
 from ISP import AlphaChip_ISP, AlphaChip_ISP_LED, AlphaChip_ISP_Pseudo, AlphaChip_ISP_Active_Signal, AlphaChip_ISP_Button
-import AlphaChip_Memory
 
 AlphaChip_Memory.g_b_Debugging = True
 if AlphaChip_Memory.g_b_Debugging:
-    import tkinter_Display, display
+    import tkinter_Display, AlphaChip_Rev2.Tkinter_Display_Start as Tkinter_Display_Start
+    
+    
+AlphaChip_Memory.g_b_Camera = True
+
 def System_Init():
 
     # LED 출력을 위한 INIT
@@ -44,7 +48,7 @@ def System_Init():
     AlphaChip_CIS.g_Sensor_mode = 2 # HQ카메라 MODE
     if AlphaChip_Memory.g_b_Debugging:
         # GUI_Debug
-        display_thread = threading.Thread(target=display.Display)
+        display_thread = threading.Thread(target=Tkinter_Display_Start.Display)
         display_thread.start()
         
         # OpenCV

@@ -1,7 +1,6 @@
 from tkinter import *
 from tkinter.simpledialog import *
 import AlphaChip_Memory
-from ISP import AlphaChip_ISP_Mode, AlphaChip_ISP_Signal_Clear
 
 def insert_Setting():
     AlphaChip_Memory.g_N_CIS_SET_REGISTER['_LOW_AMP_GAIN'] = int(insert_Low_Gain_text.get())

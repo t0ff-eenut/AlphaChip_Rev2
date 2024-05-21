@@ -1,4 +1,4 @@
-import AlphaChip_Memory, display
+import AlphaChip_Memory, Tkinter_Display_Start
 from CPU import AlphaChip_Firmware
 def TPSetting():
     if AlphaChip_Memory.g_b_Debugging:
@@ -29,21 +29,21 @@ def TPSetting():
     if AlphaChip_Memory.g_CIS_DATA_SET_REGISTER['_CIS_SETTING'] == AlphaChip_Memory.g_N_CIS_MODE['LOW']:
         if AlphaChip_Memory.g_CIS_DATA_SET_REGISTER['_SCALE'] == AlphaChip_Memory.g_N_SCALE['64x64']:
             AlphaChip_Memory.g_TH_DATA_REGISTER['_LOW_64_TP2_MIN'] = i_resualt_max + AlphaChip_Memory.g_TH_DATA_REGISTER['_TP2_SET_MARGIN_64']
-            display.insert_Low_64_TP2_MIN_text.delete(0,10)
-            display.insert_Low_64_TP2_MIN_text.insert(0, str(AlphaChip_Memory.g_TH_DATA_REGISTER['_LOW_64_TP2_MIN']))
+            Tkinter_Display_Start.insert_Low_64_TP2_MIN_text.delete(0,10)
+            Tkinter_Display_Start.insert_Low_64_TP2_MIN_text.insert(0, str(AlphaChip_Memory.g_TH_DATA_REGISTER['_LOW_64_TP2_MIN']))
         elif AlphaChip_Memory.g_CIS_DATA_SET_REGISTER['_SCALE'] == AlphaChip_Memory.g_N_SCALE['16x16']:
             AlphaChip_Memory.g_TH_DATA_REGISTER['_LOW_16_TP2_MIN'] = i_resualt_max + AlphaChip_Memory.g_TH_DATA_REGISTER['_TP2_SET_MARGIN_16']
-            display.insert_Low_16_TP2_MIN_text.delete(0,10)
-            display.insert_Low_16_TP2_MIN_text.insert(0, str(AlphaChip_Memory.g_TH_DATA_REGISTER['_LOW_16_TP2_MIN']))
+            Tkinter_Display_Start.insert_Low_16_TP2_MIN_text.delete(0,10)
+            Tkinter_Display_Start.insert_Low_16_TP2_MIN_text.insert(0, str(AlphaChip_Memory.g_TH_DATA_REGISTER['_LOW_16_TP2_MIN']))
         elif AlphaChip_Memory.g_CIS_DATA_SET_REGISTER['_SCALE'] == AlphaChip_Memory.g_N_SCALE['8x8']:
             AlphaChip_Memory.g_TH_DATA_REGISTER['_LOW_8_TP2_MIN'] = i_resualt_max + AlphaChip_Memory.g_TH_DATA_REGISTER['_TP2_SET_MARGIN_8']
-            display.insert_Low_8_TP2_MIN_text.delete(0,10)
-            display.insert_Low_8_TP2_MIN_text.insert(0, str(AlphaChip_Memory.g_TH_DATA_REGISTER['_LOW_8_TP2_MIN']))
+            Tkinter_Display_Start.insert_Low_8_TP2_MIN_text.delete(0,10)
+            Tkinter_Display_Start.insert_Low_8_TP2_MIN_text.insert(0, str(AlphaChip_Memory.g_TH_DATA_REGISTER['_LOW_8_TP2_MIN']))
         
     elif AlphaChip_Memory.g_CIS_DATA_SET_REGISTER['_CIS_SETTING'] == AlphaChip_Memory.g_N_CIS_MODE['HIGH']:
         AlphaChip_Memory.g_TH_DATA_REGISTER['_HIGH_64_TP2_MIN'] = i_resualt_max + AlphaChip_Memory.g_TH_DATA_REGISTER['_TP2_SET_MARGIN_64']
-        display.insert_High_64_TP2_MIN_text.delete(0,10)
-        display.insert_High_64_TP2_MIN_text.insert(0, str(AlphaChip_Memory.g_TH_DATA_REGISTER['_HIGH_64_TP2_MIN']))
+        Tkinter_Display_Start.insert_High_64_TP2_MIN_text.delete(0,10)
+        Tkinter_Display_Start.insert_High_64_TP2_MIN_text.insert(0, str(AlphaChip_Memory.g_TH_DATA_REGISTER['_HIGH_64_TP2_MIN']))
         
         
         

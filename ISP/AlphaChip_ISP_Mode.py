@@ -1,8 +1,8 @@
-import AlphaChip_Memory, display
+import AlphaChip_Memory, AlphaChip_Rev2.Tkinter_Display_Start as Tkinter_Display_Start
 # from CIS import AlphaChip_CIS
-from ISP import AlphaChip_ISP, AlphaChip_ISP_Signal_Clear, AlphaChip_ISP_Recheck, AlphaChip_ISP_LED, AlphaChip_ISP_Pseudo, AlphaChip_ISP_Active_Signal, AlphaChip_ISP_Button, AlphaChip_ISP_Activation_Setting
+from ISP import AlphaChip_ISP, AlphaChip_ISP_Display, AlphaChip_ISP_Signal_Clear, AlphaChip_ISP_Recheck, AlphaChip_ISP_LED, AlphaChip_ISP_Pseudo
 from CPU import AlphaChip_Firmware
-import time, threading, os
+import time, threading
 
 # PiRA 1
 #########################################################################################################################################################
@@ -59,109 +59,7 @@ Ext_GPIO_LED_ON_Mode_Signal = False
 g_i_time = AlphaChip_Memory.g_N_mode['IDLE_MODE']
 
 if AlphaChip_Memory.g_b_Debugging:
-    def display_status():
-        display.PiRA_1_text.configure(bg = 'gray')
-        display.PiRA_2_text.configure(bg = 'gray')
-        display.SSL_G_1_text.configure(bg = 'gray')
-        display.SSL_G_2_text.configure(bg = 'gray')
-        if AlphaChip_Memory.g_CIS_DATA_SET_REGISTER['TARGET'] == AlphaChip_Memory.g_N_TARGET['PIRA_1']:
-            display.PiRA_1_text.configure(bg = 'green')
-        elif AlphaChip_Memory.g_CIS_DATA_SET_REGISTER['TARGET'] == AlphaChip_Memory.g_N_TARGET['PIRA_2']:
-            display.PiRA_2_text.configure(bg = 'green')
-        elif AlphaChip_Memory.g_CIS_DATA_SET_REGISTER['TARGET'] == AlphaChip_Memory.g_N_TARGET['SSL_1']:
-            display.SSL_G_1_text.configure(bg = 'green')
-        elif AlphaChip_Memory.g_CIS_DATA_SET_REGISTER['TARGET'] == AlphaChip_Memory.g_N_TARGET['SSL_2']:
-            display.SSL_G_2_text.configure(bg = 'green')
-            
-        display.x16_text.configure(bg = 'gray')
-        display.x64_text.configure(bg = 'gray')
-        if AlphaChip_ISP.g_A_Mode_Setting[AlphaChip_Memory.g_CIS_DATA_SET_REGISTER['TARGET']][AlphaChip_ISP.g_i_Mode][0] == AlphaChip_Memory.g_N_SCALE['64x64']:
-            display.x64_text.configure(bg = 'green')
-        elif AlphaChip_ISP.g_A_Mode_Setting[AlphaChip_Memory.g_CIS_DATA_SET_REGISTER['TARGET']][AlphaChip_ISP.g_i_Mode][0] == AlphaChip_Memory.g_N_SCALE['16x16']:
-            display.x16_text.configure(bg = 'green')
-        
-        display.CPU_ON_text_handle.configure(text = str(AlphaChip_Memory.g_CPU_SET_REGISTER['CPU_WAKE_UP_CHECK']))
-        if AlphaChip_Memory.g_CPU_SET_REGISTER['CPU_WAKE_UP_CHECK']:
-            display.CPU_ON_text_handle.configure(bg = 'green')
-        else :
-            display.CPU_ON_text_handle.configure(bg = 'gray')
-
-        
-        display.Low_text.configure(bg = 'gray')
-        display.High_text.configure(bg = 'gray')
-        display.Raw_text.configure(bg = 'gray')
-        if AlphaChip_ISP.g_A_Mode_Setting[AlphaChip_Memory.g_CIS_DATA_SET_REGISTER['TARGET']][AlphaChip_ISP.g_i_Mode][2] == AlphaChip_Memory.g_CIS_MODE['LOW']:
-            display.Low_text.configure(bg = 'green')
-        elif AlphaChip_ISP.g_A_Mode_Setting[AlphaChip_Memory.g_CIS_DATA_SET_REGISTER['TARGET']][AlphaChip_ISP.g_i_Mode][2] == AlphaChip_Memory.g_CIS_MODE['HIGH']:
-            display.High_text.configure(bg = 'green')
-        elif AlphaChip_ISP.g_A_Mode_Setting[AlphaChip_Memory.g_CIS_DATA_SET_REGISTER['TARGET']][AlphaChip_ISP.g_i_Mode][2] == AlphaChip_Memory.g_CIS_MODE['RAW']:
-            display.Raw_text.configure(bg = 'green')
-            
-        display.non_text.configure(bg = 'gray')
-        display.Power_On_setting_text.configure(bg = 'gray')
-        display.Low_Gain_setting_text.configure(bg = 'gray')
-        display.High_Gain_setting_text.configure(bg = 'gray')
-        display.Raw_Gain_setting_text.configure(bg = 'gray')
-        
-        if AlphaChip_Memory.g_INT_STS_REGISTER['WAKE_UP_STS'] == AlphaChip_Memory.g_WAKE_UP_STS['non']:
-            display.non_text.configure(bg = 'green')
-        elif AlphaChip_Memory.g_INT_STS_REGISTER['WAKE_UP_STS'] == AlphaChip_Memory.g_WAKE_UP_STS['Power_On_setting']:
-            display.Power_On_setting_text.configure(bg = 'green')
-        elif AlphaChip_Memory.g_INT_STS_REGISTER['WAKE_UP_STS'] == AlphaChip_Memory.g_WAKE_UP_STS['_Low_Gain_setting']:
-            display.Low_Gain_setting_text.configure(bg = 'green')
-        elif AlphaChip_Memory.g_INT_STS_REGISTER['WAKE_UP_STS'] == AlphaChip_Memory.g_WAKE_UP_STS['_High_Gain_setting']:
-            display.High_Gain_setting_text.configure(bg = 'green')
-        elif AlphaChip_Memory.g_INT_STS_REGISTER['WAKE_UP_STS'] == AlphaChip_Memory.g_WAKE_UP_STS['_Raw_Gain_setting']:
-            display.Raw_Gain_setting_text.configure(bg = 'green')
-            
-            
-        display.Power_On_text.configure(bg = 'gray')
-        display.Stand_By_text.configure(bg = 'gray')
-        display.Watch_text.configure(bg = 'gray')
-        display.Low_Recheck_text.configure(bg = 'gray')
-        display.LED_On_text.configure(bg = 'gray')
-        display.Active_1_text.configure(bg = 'gray')
-        display.Active_2_text.configure(bg = 'gray')
-        display.Recheck_text.configure(bg = 'gray')
-        if AlphaChip_ISP.g_i_Mode == AlphaChip_Memory.g_N_mode['POWER_ON_MODE']:
-            display.Power_On_text.configure(bg = 'green')
-        elif AlphaChip_ISP.g_i_Mode == AlphaChip_Memory.g_N_mode['STAND_BY_MODE']:
-            display.Stand_By_text.configure(bg = 'green')
-        elif AlphaChip_ISP.g_i_Mode == AlphaChip_Memory.g_N_mode['WATCH_MODE']:
-            display.Watch_text.configure(bg = 'green')
-        elif AlphaChip_ISP.g_i_Mode == AlphaChip_Memory.g_N_mode['LOW_RECHECK_MODE']:
-            display.Low_Recheck_text.configure(bg = 'green')
-        elif AlphaChip_ISP.g_i_Mode == AlphaChip_Memory.g_N_mode['LED_ON']:
-            display.LED_On_text.configure(bg = 'green')
-        elif AlphaChip_ISP.g_i_Mode == AlphaChip_Memory.g_N_mode['ACTIVE_MODE']:
-            display.Active_1_text.configure(bg = 'green')
-        elif AlphaChip_ISP.g_i_Mode == AlphaChip_Memory.g_N_mode['DETECT_MODE']:
-            display.Active_2_text.configure(bg = 'green')
-        elif AlphaChip_ISP.g_i_Mode == AlphaChip_Memory.g_N_mode['RECHECK_MODE']:
-           display.Recheck_text.configure(bg = 'green')
-           
-        # display.Lux_text_handle.configure(text = str(AlphaChip_Memory.g_RESULT_STS_REGISTER['_LUX']))
-        display.Illuminanace_text_handle.configure(text = str(AlphaChip_Memory.g_N_ILLUMINANCE_STS_REGISTER['Illuminance_data']))
-        # display.Resualt_text_handle.configure(text = str(AlphaChip_Memory.g_N_ILLUMINANCE_STS_REGISTER['Illuminance_delta_siganl']))
-        # display.Illuminanace_text_handle.configure(text = str(AlphaChip_Memory.g_N_ILLUMINANCE_STS_REGISTER['Illuminance_delta']))
-        display.Resualt_text_handle.configure(text = str(AlphaChip_Memory.g_RESULT_STS_REGISTER['Result_data']))
-        
-        if AlphaChip_Memory.g_INT_STS_REGISTER['_PSEUDO_LED_STS'] == False:
-            display.LED_State_text_handle.configure(text = 'Non', bg = 'gray')
-        elif AlphaChip_Memory.g_INT_STS_REGISTER['_PSEUDO_LED_STS'] == True:
-            display.LED_State_text_handle.configure(text = 'ON', bg = 'yellow')
-        # elif AlphaChip_Memory.g_INT_STS_REGISTER['LED_STS'] == 2:
-        #     display.LED_State_text_handle.configure(text = 'OFF', bg = 'gray')
-        
-        # if AlphaChip_Memory.g_INT_STS_REGISTER['_Pseudo_STS'] == False:
-        #     display.Pseudo_State_text_handle.configure(text = 'Non', bg = 'gray')
-        # elif AlphaChip_Memory.g_INT_STS_REGISTER['_Pseudo_STS'] == True:
-        #     display.Pseudo_State_text_handle.configure(text = 'ON', bg = 'yellow')
-            
-        display.LED_Level_text_handle.configure(text = str(AlphaChip_Memory.g_INT_STS_REGISTER['_LED_LEVEL']))
-            
-        for n in range(AlphaChip_Memory.g_N_RECHECK_SETTING['_RECHECK_COUNT']):
-            display.Array_Buffer_text_handle[n].configure(text = str(AlphaChip_Memory.g_b_A_Occupancy_buffer[n]))
+    AlphaChip_ISP_Display.display_status()
             
 ############################################################################################################ 확인 필요 ##########################
 def Ext_Active_ON():
@@ -239,7 +137,7 @@ def ISP_New_Frame(b_resualt):
         g_i_Illuminance_delta_signal = AlphaChip_Memory.g_N_ILLUMINANCE_STS_REGISTER['Illuminance_delta_signal']
         g_i_Illuminance_delta = AlphaChip_Memory.g_N_ILLUMINANCE_STS_REGISTER['Illuminance_delta']
         g_i_resualt = AlphaChip_Memory.g_RESULT_STS_REGISTER['Result_data']  
-        display_status()
+        AlphaChip_ISP_Display.display_status()
         if (not b_resualt
             or (AlphaChip_Memory.g_F_A_FRAME_BUFF_ZERO[0] == False and AlphaChip_Memory.g_F_A_FRAME_BUFF_ZERO[1] == False)):
             break
@@ -521,7 +419,7 @@ def Mode():
                 AlphaChip_Memory.g_INT_STS_REGISTER['_LED_LEVEL'] = led_level
                 time.sleep(AlphaChip_Memory.g_LED_DIMMING_LEVEL_SET_REGISTER['_DIM_WAIT_TIME']/1000)
                 if AlphaChip_Memory.g_b_Debugging:
-                    display.LED_Level_text_handle.configure(text = str(AlphaChip_Memory.g_INT_STS_REGISTER['_LED_LEVEL']))
+                    Tkinter_Display_Start.LED_Level_text_handle.configure(text = str(AlphaChip_Memory.g_INT_STS_REGISTER['_LED_LEVEL']))
                     print("ISP : MODE : ACTIVE_MODE : 출력 초기화")
                     
             while True:
@@ -532,7 +430,7 @@ def Mode():
                 ### PiRA 1
                 if AlphaChip_Memory.g_CIS_DATA_SET_REGISTER['TARGET'] == AlphaChip_Memory.g_N_TARGET['PIRA_1']:
                     if AlphaChip_Memory.g_b_Debugging:
-                        display.Pseudo_State_text_handle.configure(text = 'OFF', bg = 'gray')
+                        Tkinter_Display_Start.Pseudo_State_text_handle.configure(text = 'OFF', bg = 'gray')
                         print("ISP : MODE : ACTIVE_MODE : g_i_x_Illuminance : ", g_i_x_Illuminance)
                         print("ISP : MODE : ACTIVE_MODE : g_i_Illuminance : ", g_i_Illuminance)
                         print("ISP : MODE : ACTIVE_MODE : Result_data : ", g_i_resualt)
@@ -553,24 +451,24 @@ def Mode():
                                             AlphaChip_Memory.g_PIRA_PULSE_REGISTER['_OUTPUT_COUNT'] += 1                                                                        # 출력 횟수 1회 증가
                                         
                                         if AlphaChip_Memory.g_b_Debugging:
-                                            display.insert_Pseudo_Signal_Count_text.delete(0,10)
-                                            display.insert_Pseudo_Signal_Count_text.insert(0, str(AlphaChip_Memory.g_PIRA_PULSE_REGISTER['_OUTPUT_COUNT']))
-                                            display.insert_Pseudo_Signal_Width_text.delete(0,10)
-                                            display.insert_Pseudo_Signal_Width_text.insert(0, str(AlphaChip_Memory.g_PIRA_PULSE_REGISTER['_PSEDO_WIDTH']))
-                                            display.insert_Pseudo_Signal_Cycle_text.delete(0,10)
-                                            display.insert_Pseudo_Signal_Cycle_text.insert(0, str(AlphaChip_Memory.g_PIRA_PULSE_REGISTER['CYCLE_LENGTH']))
+                                            Tkinter_Display_Start.insert_Pseudo_Signal_Count_text.delete(0,10)
+                                            Tkinter_Display_Start.insert_Pseudo_Signal_Count_text.insert(0, str(AlphaChip_Memory.g_PIRA_PULSE_REGISTER['_OUTPUT_COUNT']))
+                                            Tkinter_Display_Start.insert_Pseudo_Signal_Width_text.delete(0,10)
+                                            Tkinter_Display_Start.insert_Pseudo_Signal_Width_text.insert(0, str(AlphaChip_Memory.g_PIRA_PULSE_REGISTER['_PSEDO_WIDTH']))
+                                            Tkinter_Display_Start.insert_Pseudo_Signal_Cycle_text.delete(0,10)
+                                            Tkinter_Display_Start.insert_Pseudo_Signal_Cycle_text.insert(0, str(AlphaChip_Memory.g_PIRA_PULSE_REGISTER['CYCLE_LENGTH']))
                                         
                                         # 수정된 Pseudo Signal 출력
                                         for i in range(0, AlphaChip_Memory.g_PIRA_PULSE_REGISTER['_OUTPUT_COUNT'], 1):                                                      # 저장된 Pseudo Signal 출력 횟수 만큼 반복
                                             AlphaChip_Memory.g_INT_STS_REGISTER['_Pseudo_STS'] = True                                                                           # Pseudo Signal 출력 표시
                                             if AlphaChip_Memory.g_b_Debugging:
-                                                display.Pseudo_State_text_handle.configure(text = 'ON', bg = 'yellow')
+                                                Tkinter_Display_Start.Pseudo_State_text_handle.configure(text = 'ON', bg = 'yellow')
                                             AlphaChip_ISP_Pseudo.GPIO.output(AlphaChip_ISP_Pseudo.g_i_Pseudo_0_OUT_PinNumber, True)                         
                                             AlphaChip_ISP_Pseudo.time.sleep(AlphaChip_Memory.g_PIRA_PULSE_REGISTER['_PSEDO_WIDTH'] / 1000)                                      # Pseudo Signal 출력 폭
                                             AlphaChip_ISP_Pseudo.GPIO.output(AlphaChip_ISP_Pseudo.g_i_Pseudo_0_OUT_PinNumber, False)
                                             AlphaChip_Memory.g_INT_STS_REGISTER['_Pseudo_STS'] = False
                                             if AlphaChip_Memory.g_b_Debugging:
-                                                display.Pseudo_State_text_handle.configure(text = 'Non', bg = 'gray')
+                                                Tkinter_Display_Start.Pseudo_State_text_handle.configure(text = 'Non', bg = 'gray')
                                         i_Pseudo_Signal_x_time = time.time()                                                                                                # 마지막 Pseudo Signal 출력 시간 저장
                                         ISP_New_Frame(True)                                                                                                                          # 새로운 Frame 확인하여 점등 하였는지 확인
                                         if g_i_Illuminance_delta_signal == False:
@@ -586,12 +484,12 @@ def Mode():
                             for i in range(0, AlphaChip_Memory.g_PIRA_PULSE_REGISTER['_OUTPUT_COUNT'], 1):                                                  # AlphaChip_Memory.g_PIRA_PULSE_REGISTER['_OUTPUT_COUNT'] 횟수 만큼 Pseudo Signal 출력                      
                                 AlphaChip_Memory.g_INT_STS_REGISTER['_PSEUDO_LED_STS'] = True                                                                       # Pseudo Signal ON
                                 if AlphaChip_Memory.g_b_Debugging:
-                                    display.Pseudo_State_text_handle.configure(text = 'ON', bg = 'yellow')
+                                    Tkinter_Display_Start.Pseudo_State_text_handle.configure(text = 'ON', bg = 'yellow')
                                 AlphaChip_ISP_Pseudo.GPIO.output(AlphaChip_ISP_Pseudo.g_i_Pseudo_0_OUT_PinNumber,  AlphaChip_Memory.g_INT_STS_REGISTER['_Pseudo_STS'])
                                 AlphaChip_ISP_Pseudo.time.sleep(AlphaChip_Memory.g_PIRA_PULSE_REGISTER['_PSEDO_WIDTH'] / 1000)                                  # Pseudo Signal 폭
                                 AlphaChip_Memory.g_INT_STS_REGISTER['_PSEUDO_LED_STS'] = False                                                                      # Pseudo Signal OFF
                                 if AlphaChip_Memory.g_b_Debugging:
-                                    display.Pseudo_State_text_handle.configure(text = 'OFF', bg = 'gray')   
+                                    Tkinter_Display_Start.Pseudo_State_text_handle.configure(text = 'OFF', bg = 'gray')   
                                 AlphaChip_ISP_Pseudo.GPIO.output(AlphaChip_ISP_Pseudo.g_i_Pseudo_0_OUT_PinNumber, AlphaChip_Memory.g_INT_STS_REGISTER['_Pseudo_STS'])
                             i_Pseudo_Signal_x_time = time.time() ####### 마지막 Pseudo Signal 출력 시간 저장           
        
@@ -658,7 +556,7 @@ def Mode():
                                 b_Dimming_UP = not b_Dimming_UP
                                 i_Dimming_count += 1
                                 if AlphaChip_Memory.g_b_Debugging:
-                                    display.LED_Level_text_handle.configure(text = str(AlphaChip_Memory.g_INT_STS_REGISTER['_LED_LEVEL']))
+                                    Tkinter_Display_Start.LED_Level_text_handle.configure(text = str(AlphaChip_Memory.g_INT_STS_REGISTER['_LED_LEVEL']))
                                     print("ISP : MODE : ACTIVE_MODE_1 : i_Dimming_count : ", i_Dimming_count)
                             
                             ISP_New_Frame(True)
@@ -917,14 +815,14 @@ def Mode():
                 AlphaChip_ISP_LED.g_i_LED_0_Controller.ChangeDutyCycle(AlphaChip_Memory.g_LED_DIMMING_LEVEL_SET_REGISTER['DIM_LEVEL_'+str(led_level)])
                 AlphaChip_Memory.g_INT_STS_REGISTER['_LED_LEVEL'] = led_level        
                 if AlphaChip_Memory.g_b_Debugging:
-                    display.LED_Level_text_handle.configure(text = str(AlphaChip_Memory.g_INT_STS_REGISTER['_LED_LEVEL']))    
+                    Tkinter_Display_Start.LED_Level_text_handle.configure(text = str(AlphaChip_Memory.g_INT_STS_REGISTER['_LED_LEVEL']))    
             else:                                                                                                                                       # LED 가 OFF 라면
                 AlphaChip_Memory.g_INT_STS_REGISTER['LED_STS'] = True                                                                                          # LED ON 설정
                 led_level = 4                                                                                                                               # LED Level 4 로 설정
                 AlphaChip_ISP_LED.g_i_LED_0_Controller.ChangeDutyCycle(AlphaChip_Memory.g_LED_DIMMING_LEVEL_SET_REGISTER['DIM_LEVEL_'+str(led_level)])
                 AlphaChip_Memory.g_INT_STS_REGISTER['_LED_LEVEL'] = led_level
                 if AlphaChip_Memory.g_b_Debugging:
-                    display.LED_Level_text_handle.configure(text = str(AlphaChip_Memory.g_INT_STS_REGISTER['_LED_LEVEL']))           
+                    Tkinter_Display_Start.LED_Level_text_handle.configure(text = str(AlphaChip_Memory.g_INT_STS_REGISTER['_LED_LEVEL']))           
             
             b_occupancy = AlphaChip_ISP_Recheck.Recheck_Process(True)                                                                                       # Recheck 실행
             if b_occupancy == True:                                                                                                                     # 재실이라면
@@ -946,7 +844,7 @@ def Mode():
                     AlphaChip_Memory.g_INT_STS_REGISTER['_LED_LEVEL'] = led_level
                     time.sleep(AlphaChip_Memory.g_LED_DIMMING_LEVEL_SET_REGISTER['_DIM_WAIT_TIME']/1000)
                     if AlphaChip_Memory.g_b_Debugging:
-                        display.LED_Level_text_handle.configure(text = str(AlphaChip_Memory.g_INT_STS_REGISTER['_LED_LEVEL']))    
+                        Tkinter_Display_Start.LED_Level_text_handle.configure(text = str(AlphaChip_Memory.g_INT_STS_REGISTER['_LED_LEVEL']))    
                 AlphaChip_Memory.g_INT_STS_REGISTER['_PSEUDO_LED_STS'] = False # LED OFF
 
                 while AlphaChip_Memory.g_INT_STS_REGISTER['SIG_STATE_WAIT']:

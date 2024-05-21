@@ -1,6 +1,7 @@
 import numpy as np
 
 g_b_Debugging = True
+g_b_Camera = True
 g_RAW_CAM = True
 ###############################################################
 
