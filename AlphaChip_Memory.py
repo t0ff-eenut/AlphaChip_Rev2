@@ -1,5 +1,4 @@
 import numpy as np
-
 g_b_Debugging = True
 g_b_Camera = True
 g_RAW_CAM = True
@@ -122,7 +121,7 @@ g_RESULT_STS_REGISTER = {'Result_data' : 0                       # 현재 Frame 
 # 0x0C R R/W
 g_TP1_REGISTER = {'_LOW_TP1' : 0                                  # 저조도용 TP1
                   ,'_HIGH_TP1' : 0                                # 고조도 TP1
-                  
+
                   ####################
                   ,'_LOW_LIGHT_Delta_TH' : 0                      # 8bit
                   ,'_HIGH_LIGHT_Delta_TH' : 0                     # 8bit

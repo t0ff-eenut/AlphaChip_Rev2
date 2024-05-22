@@ -1,7 +1,4 @@
-from picamera2 import Picamera2
-import cv2, time, os
-import AlphaChip_Memory
-from ISP import AlphaChip_ISP
+from AlphaChip_Header import *
 
 #### GAIN 22 max
 g_i_sensor_mode = 2

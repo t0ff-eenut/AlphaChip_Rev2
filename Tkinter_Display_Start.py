@@ -1,6 +1,5 @@
-from tkinter import *
-from tkinter.simpledialog import *
 import AlphaChip_Memory
+from tkinter import *
 
 def insert_Setting():
     AlphaChip_Memory.g_N_CIS_SET_REGISTER['_LOW_AMP_GAIN'] = int(insert_Low_Gain_text.get())
@@ -57,7 +56,7 @@ def Display():
     global Pseudo_State_text_handle, LED_State_text_handle, LED_Level_text_handle
     global insert_Low_TP1_text, insert_Low_16_TP2_MIN_text, insert_Low_16_TP2_MAX_text, insert_Low_64_TP2_MIN_text, insert_Low_64_TP2_MAX_text, insert_High_TP1_text, insert_High_64_TP2_MIN_text, insert_High_64_TP2_MAX_text
     global insert_Pseudo_Signal_Count_text, insert_Pseudo_Signal_Width_text, insert_Pseudo_Signal_Cycle_text, insert_LED_DIMMING_LEVLE_1_text, insert_LED_DIMMING_LEVLE_2_text, insert_LED_DIMMING_LEVLE_3_text, insert_LED_DIMMING_LEVLE_4_text, insert_LED_DIMMING_LEVLE_5_text
-    
+
     main_row = 0
     main_col = 0
     Product_row = 0
@@ -83,11 +82,11 @@ def Display():
     OUTPUT_row = 0
     OUTPUT_col = 0
     Array_Buffer_text_handle = []
-    
+
     MainWindows = Tk() # 기본 윈도우 생성
     MainWindows.title("Alpha Chip 상태") # 윈도우의 제목 설정
     MainWindows.geometry("+0+550")
-    
+
     Product_group_Frame = Frame(MainWindows)
     Product_group_Frame.grid(row=main_row,column=main_col,sticky=N+E+W+S)
     Product_text = Label(Product_group_Frame, text="Product : ")
@@ -120,7 +119,7 @@ def Display():
     Scale_col += 1
     x64_text = Label(Scale_group_Frame, text="64x64")
     x64_text.grid(row=Scale_row,column=Scale_col,sticky=N+E+W+S)
-    
+
     main_col += 1
     CPU_ON_group_Frame = Frame(MainWindows)
     CPU_ON_group_Frame.grid(row=main_row,column=main_col,sticky=N+E+W+S)
@@ -129,7 +128,7 @@ def Display():
     CPU_ON_col += 1
     CPU_ON_text_handle = Label(CPU_ON_group_Frame, text="Non")
     CPU_ON_text_handle.grid(row=CPU_ON_row,column=CPU_ON_col,sticky=N+E+W+S)
-    
+
     main_row += 1
     main_col = 1
     CIS_Status_group_Frame = Frame(MainWindows)
@@ -145,7 +144,7 @@ def Display():
     Status_col += 1
     Raw_text = Label(CIS_Status_group_Frame, text="RAW")
     Raw_text.grid(row=Status_row,column=Status_col,sticky=N+E+W+S)
-    
+
     main_col += 1
     CPU_group_Frame = Frame(MainWindows)
     CPU_group_Frame.grid(row=main_row,column=main_col,sticky=N+E+W+S)
@@ -166,7 +165,7 @@ def Display():
     State_col += 1
     Raw_Gain_setting_text = Label(CPU_group_Frame, text="_Raw_Gain_setting")
     Raw_Gain_setting_text.grid(row=State_row,column=State_col,sticky=N+E+W+S)
-    
+
     main_row += 1
     main_col = 0
     Mode_group_Frame = Frame(MainWindows)
@@ -346,7 +345,7 @@ def Display():
     LED_Level_text_handle.grid(row=OUTPUT_Setting_row,column=OUTPUT_Setting_col,sticky=N+E+W+S)
     OUTPUT_Setting_row += 1
     OUTPUT_Setting_col = 0
-    
+
     main_row += 1
     main_col = 0
     TP_group_Frame = Frame(MainWindows)
@@ -436,7 +435,7 @@ def Display():
     TP_col = 1
     insert_TP_button = Button(TP_group_Frame, text="TP 설정", command=insert_TP)
     insert_TP_button.grid(row=TP_row,column=TP_col,sticky=N+E+W+S, columnspan=2)
-    
+
     main_col += 1
     OUTPUT_group_Frame = Frame(MainWindows)
     OUTPUT_group_Frame.grid(row=main_row,column=main_col,sticky=N+E+W+S)
@@ -509,7 +508,7 @@ def Display():
     OUTPUT_col = 1
     insert_OUTPUT_button = Button(OUTPUT_group_Frame, text="출력 설정", command=insert_output)
     insert_OUTPUT_button.grid(row=OUTPUT_row,column=OUTPUT_col,sticky=N+E+W+S, columnspan=2)
-    
+
     main_row += 1
     main_col = 0
     Quit_btn = Button(MainWindows, text='종료', command=quit)    # quit는 프로그램을 종료시킨다

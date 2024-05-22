@@ -1,4 +1,5 @@
-import AlphaChip_Memory, AlphaChip_Rev2.Tkinter_Display_Start as Tkinter_Display_Start
+import AlphaChip_Memory, Tkinter_Display_Start
+
 from ISP import AlphaChip_ISP
 
 def display_status():

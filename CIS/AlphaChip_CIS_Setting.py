@@ -1,5 +1,5 @@
-import AlphaChip_Memory, Tkinter_Display_Start
-from CIS import AlphaChip_CIS
+from AlphaChip_Header import *
+
 def CIS_Gain_Set(i_cis_mode, i_gain_value):
     
     AlphaChip_CIS.g_PICAM_RAW.stop()
